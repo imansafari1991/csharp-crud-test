@@ -5,10 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Csharp.CRUD.Application.Contracts.Persistence;
 using Csharp.CRUD.Application.Contracts.Serivces;
+using Csharp.CRUD.Application.DTOs.Customers;
 using Csharp.CRUD.Application.Features.Customers.Handlers.Commands;
 using Csharp.CRUD.Application.Features.Customers.Requests.Commands;
+using Csharp.CRUD.Application.Profiles;
 using Csharp.CRUD.Domain;
 using Csharp.CRUD.Persistence.Repositories;
 using Moq;
@@ -18,11 +21,16 @@ namespace Csharp.CRUD.Tests.IntegrationTests
     public class CreateCustomerCommandTests
     {
         private readonly Mock<ICustomerRepository> _customerRepositoryMock;
+        private readonly IMapper _mapper;
 
-
-        public CreateCustomerCommandTests(Mock<ICustomerRepository> customerRepositoryMock)
+        public CreateCustomerCommandTests(Mock<ICustomerRepository> customerRepositoryMock, IMapper mapper)
         {
             _customerRepositoryMock = customerRepositoryMock;
+            var mapperConfig = new MapperConfiguration(c =>
+            {
+                c.AddProfile<CustomerMappingProfile>();
+            });
+            _mapper = mapperConfig.CreateMapper();
         }
 
         [Fact]
@@ -54,13 +62,7 @@ namespace Csharp.CRUD.Tests.IntegrationTests
 
             CreateCustomerCommand command = new CreateCustomerCommand
             {
-                DateOfBirth = customer2.DateOfBirth,
-                Email = customer2.Email,
-                FirstName = customer2.FirstName,
-                LastName = customer2.LastName,
-                BankAccountAddress = customer2.BankAccountAddress,
-                PhoneNumber = customer2.PhoneNumber,
-
+                CreateCustomerDto = _mapper.Map<CreateCustomerDto>(customer2)
             };
             createCustomerHandler.Handle(command, CancellationToken.None);
 
