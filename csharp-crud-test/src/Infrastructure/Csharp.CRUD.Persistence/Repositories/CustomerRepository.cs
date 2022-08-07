@@ -22,30 +22,37 @@ public class CustomerRepository : ICustomerRepository
 
     }
 
-    public Task Delete(Customer entity)
+    public async Task Delete(Customer entity)
     {
-        throw new NotImplementedException();
+        _context.Customers.Remove(entity);
+        await _context.SaveChangesAsync();
     }
 
 
 
-    public Task<Customer> Get(int id)
+    public async Task<Customer?> Get(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Customers.FindAsync(id);
     }
 
-    public Task<IReadOnlyList<Customer>> GetAll()
+    public async Task<IReadOnlyList<Customer>> GetAll()
     {
-        throw new NotImplementedException();
+        return await _context.Customers.ToListAsync();
     }
 
-    public Task Update(Customer entity)
+    public async Task Update(Customer entity)
     {
-        throw new NotImplementedException();
+        _context.Entry(entity).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
     }
 
     public bool IsExists(Customer customer)
     {
         return _context.Customers.Any(p=>p.FirstName==customer.FirstName && p.LastName==customer.LastName && p.DateOfBirth==customer.DateOfBirth);
+    }
+
+    public bool IsExists(string email)
+    {
+        return _context.Customers.Any(p=>p.Email==email);
     }
 }

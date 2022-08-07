@@ -2,8 +2,20 @@
 
 public static class Constants
 {
-    public const string PhoneNumberInvalidMessage = "Phone number length cannot be more than 15";
-    public const string InCorrectEmailFormat = "You have used incorrect email format";
+    public const string PhoneNumberInvalidMessage = "Phone number length cannot be more than 15.";
+    public const string InCorrectEmailFormat = "You have used incorrect email format.";
+    public const string DuplicateEmailAddress = "Your email is allready exists.";
+
+    public const string FirstNameCannotBeNull = "Firstname Cannot Be Null.";
+    public const string LastNameCannotBeNull = "LastName Cannot Be Null.";
+    public const string EmailCannotBeNull = "Email Cannot Be Null.";
+
+    public const string BankAccountMax = "Bank Account Number Cannot exceed more than 15 characters.";
+    public const string BankAccountMin = "Bank Account Number Cannot less than 5 characters.";
+
+
+
+
 
     public const string DateOfBirthInvalid = "You cannot born after today!";
 

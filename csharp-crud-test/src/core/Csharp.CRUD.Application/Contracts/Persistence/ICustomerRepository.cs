@@ -9,11 +9,13 @@ namespace Csharp.CRUD.Application.Contracts.Persistence
 {
     public interface ICustomerRepository
     {
-        Task<Customer> Get(int id);
+        Task<Customer?> Get(int id);
         Task<IReadOnlyList<Customer>> GetAll();
         Task<Customer> Add(Customer entity);
         Task Update(Customer entity);
         Task Delete(Customer entity);
         bool IsExists(Customer customer);
+        bool IsExists(string email);
+
     }
 }

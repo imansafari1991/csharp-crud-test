@@ -14,6 +14,10 @@ namespace Csharp.CRUD.Application.Profiles
         public CustomerMappingProfile()
         {
             CreateMap<Customer, CreateCustomerDto>().ReverseMap();
+            CreateMap<Customer, UpdateCustomerDto>().ReverseMap();
+            CreateMap<Customer, GetCustomerDto>();
+           
+
         }
     }
 }

@@ -11,13 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\Customers\" />
-    <Folder Include="Features\Customers\Handlers\Commands\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Validators\Customers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="FluentValidation" Version="11.1.1" />
     <PackageReference Include="libphonenumber-csharp" Version="8.12.52" />

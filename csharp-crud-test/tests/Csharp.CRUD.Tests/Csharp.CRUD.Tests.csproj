@@ -28,8 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\core\Csharp.CRUD.Domain\Csharp.CRUD.Domain.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\Csharp.CRUD.Persistence\Csharp.CRUD.Persistence.csproj" />
+    <ProjectReference Include="..\..\src\core\Csharp.CRUD.Application\Csharp.CRUD.Application.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure\Csharp.CRUD.Persistence\Csharp.CRUD.Persistence.csproj" />
   </ItemGroup>
+
 
 </Project>

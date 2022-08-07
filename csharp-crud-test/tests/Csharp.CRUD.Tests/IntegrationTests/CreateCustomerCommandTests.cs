@@ -67,12 +67,10 @@ namespace Csharp.CRUD.Tests.IntegrationTests
 
             _customerRepositoryMock.Verify(x => x.Add(It.IsAny<Customer>()), Times.Never);
 
-
-
         }
 
         [Fact]
-        public async void Should_Throw_Exception_If_Phonenumber_Is_not_valid()
+        public async void Should_Phonenumber_Is_valid()
         {
 
             var customerRepo = new CustomerRepository(_context);
@@ -90,7 +88,7 @@ namespace Csharp.CRUD.Tests.IntegrationTests
         }
 
         [Fact]
-        public async void Should_Throw_Exception_Phonenumber_Not_Start_with_Valid_Country_Code()
+        public  void Should_Throw_Exception_Phonenumber_Not_Start_with_Valid_Country_Code()
         {
 
             var customerRepo = new CustomerRepository(_context);
@@ -100,12 +98,87 @@ namespace Csharp.CRUD.Tests.IntegrationTests
             {
                 CreateCustomerDto = _mapper.Map<CreateCustomerDto>(_customer)
             };
-            var exception= Should.Throw<Exception>(() => createCustomerHandler.Handle(command, CancellationToken.None));
+            var exception = Should.Throw<Exception>(() => createCustomerHandler.Handle(command, CancellationToken.None));
             exception.Message.ShouldBe(Constants.InvalidPhoneNumberRegion);
 
         }
 
+        [Fact]
+        public async void Should_Email_Is_valid()
+        {
 
+            var customerRepo = new CustomerRepository(_context);
+            var createCustomerHandler = new CreateCustomerCommandHandler(customerRepo, _mapper);
+            // Invalid Email
+            _customer.Email = "iman.f.com";
+            CreateCustomerCommand command = new CreateCustomerCommand
+            {
+                CreateCustomerDto = _mapper.Map<CreateCustomerDto>(_customer)
+            };
+
+            var res = await createCustomerHandler.Handle(command, CancellationToken.None);
+
+            res.Errors.ShouldContain(p => p.ErrorMessage == Constants.InCorrectEmailFormat);
+
+        }
+        [Fact]
+        public async void Should_Not_Email_Duplicated()
+        {
+            _context.Add(_customer);
+
+            _context.SaveChanges();
+
+            
+            var customer2 = _customer;
+            customer2.Id = 2;
+
+            var customerRepo = new CustomerRepository(_context);
+            var createCustomerHandler = new CreateCustomerCommandHandler(customerRepo, _mapper);
+
+            CreateCustomerCommand command = new CreateCustomerCommand
+            {
+                CreateCustomerDto = _mapper.Map<CreateCustomerDto>(customer2)
+            };
+
+            var res = await createCustomerHandler.Handle(command, CancellationToken.None);
+
+            res.Errors.ShouldContain(p => p.ErrorMessage == Constants.DuplicateEmailAddress);
+
+        }
+
+        [Fact]
+        public async Task Should_FirstName_Is_Not_NullAsync()
+        {
+            var customerRepo = new CustomerRepository(_context);
+            var createCustomerHandler = new CreateCustomerCommandHandler(customerRepo, _mapper);
+            _customer.FirstName = null;
+
+            CreateCustomerCommand command = new CreateCustomerCommand
+            {
+                CreateCustomerDto = _mapper.Map<CreateCustomerDto>(_customer)
+            };
+
+            var res = await createCustomerHandler.Handle(command, CancellationToken.None);
+
+            res.Errors.ShouldContain(p => p.ErrorMessage == Constants.FirstNameCannotBeNull);
+        }
+        [Fact]
+        public async Task Should_LastName_Is_Not_NullAsync()
+        {
+            var customerRepo = new CustomerRepository(_context);
+            var createCustomerHandler = new CreateCustomerCommandHandler(customerRepo, _mapper);
+            _customer.LastName = null;
+            CreateCustomerCommand command = new CreateCustomerCommand
+            {
+                
+                CreateCustomerDto = _mapper.Map<CreateCustomerDto>(_customer)
+            };
+
+            var res = await createCustomerHandler.Handle(command, CancellationToken.None);
+
+            res.Errors.ShouldContain(p => p.ErrorMessage == Constants.LastNameCannotBeNull);
+        }
+       
 
     }
 }

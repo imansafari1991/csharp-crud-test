@@ -4,6 +4,7 @@ using Csharp.CRUD.Application.Features.Customers.Requests.Commands;
 using Csharp.CRUD.Application.Responses.Base;
 using Csharp.CRUD.Application.Validators.Customers;
 using Csharp.CRUD.Domain;
+using FluentValidation.Results;
 using MediatR;
 
 namespace Csharp.CRUD.Application.Features.Customers.Handlers.Commands;
@@ -21,7 +22,7 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
     public async Task<CommandResponse> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
     {
         var customer = _mapper.Map<Customer>(request.CreateCustomerDto);
-        var results = new CreateCustomerValidator().Validate(request);
+        var results = new CreateCustomerValidator(_customerRepository).Validate(request);
         if (!results.IsValid)
         {
             return new HasError(results);
@@ -30,8 +31,17 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
         {
             await _customerRepository.Add(customer);
         }
-      
+        else
+        {
+            return new HasError(new ValidationResult() { Errors = new List<ValidationFailure>() { new() { ErrorMessage = "This user is allready exists!" } } });
+        }
 
-        return new Success();
+
+        return new Success()
+        {
+            Data = customer,
+            Id = customer.Id
+
+        };
     }
 }

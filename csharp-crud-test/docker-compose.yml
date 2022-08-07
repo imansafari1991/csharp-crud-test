@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  customerdb:
+    image: postgres
+  csharp.crud.api:
+    image: ${DOCKER_REGISTRY-}csharpcrudapi
+    build:
+      context: .
+      dockerfile: src/API/Csharp.CRUD.API/Dockerfile
+volumes:
+    postgres_data:
