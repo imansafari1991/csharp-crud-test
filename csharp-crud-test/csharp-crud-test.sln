@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32714.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D9B918C0-B95D-40C1-BA18-EF8C936FA854}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F0EB054F-5DF0-49F1-92F8-66C638FE95FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{69669A6F-EBCA-4CFF-85E0-038F88A1F865}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{93EFC97D-2734-4C57-9614-0ED43BD176B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{50DD2D6B-5245-4AC3-AA20-727AC16ACAB2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{FA92C5C5-0975-4D33-9471-5560FCD2D24B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csharp.CRUD.Domain", "src\core\Csharp.CRUD.Domain\Csharp.CRUD.Domain.csproj", "{872A259E-ED38-4A5E-952C-230D6BBF91C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{872A259E-ED38-4A5E-952C-230D6BBF91C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{872A259E-ED38-4A5E-952C-230D6BBF91C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{872A259E-ED38-4A5E-952C-230D6BBF91C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{872A259E-ED38-4A5E-952C-230D6BBF91C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{69669A6F-EBCA-4CFF-85E0-038F88A1F865} = {D9B918C0-B95D-40C1-BA18-EF8C936FA854}
+		{93EFC97D-2734-4C57-9614-0ED43BD176B5} = {D9B918C0-B95D-40C1-BA18-EF8C936FA854}
+		{50DD2D6B-5245-4AC3-AA20-727AC16ACAB2} = {D9B918C0-B95D-40C1-BA18-EF8C936FA854}
+		{FA92C5C5-0975-4D33-9471-5560FCD2D24B} = {D9B918C0-B95D-40C1-BA18-EF8C936FA854}
+		{872A259E-ED38-4A5E-952C-230D6BBF91C5} = {69669A6F-EBCA-4CFF-85E0-038F88A1F865}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9A191DC-2AB0-4786-B85A-52757FEF5892}
+	EndGlobalSection
+EndGlobal
