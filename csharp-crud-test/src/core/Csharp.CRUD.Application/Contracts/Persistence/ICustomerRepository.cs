@@ -12,8 +12,8 @@ namespace Csharp.CRUD.Application.Contracts.Persistence
         Task<Customer> Get(int id);
         Task<IReadOnlyList<Customer>> GetAll();
         Task<Customer> Add(Customer entity);
-        Task<bool> Exists(int id);
         Task Update(Customer entity);
         Task Delete(Customer entity);
+        bool IsExists(Customer customer);
     }
 }
