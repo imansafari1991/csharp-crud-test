@@ -14,9 +14,12 @@ public class CustomerRepository : ICustomerRepository
     }
 
 
-    public Task<Customer> Add(Customer entity)
+    public async Task<Customer> Add(Customer entity)
     {
-        throw new NotImplementedException();
+       await _context.AddAsync(entity);
+       await _context.SaveChangesAsync();
+       return entity;
+
     }
 
     public Task Delete(Customer entity)

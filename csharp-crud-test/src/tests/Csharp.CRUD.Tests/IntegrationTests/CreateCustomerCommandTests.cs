@@ -23,9 +23,9 @@ namespace Csharp.CRUD.Tests.IntegrationTests
         private readonly Mock<ICustomerRepository> _customerRepositoryMock;
         private readonly IMapper _mapper;
 
-        public CreateCustomerCommandTests(Mock<ICustomerRepository> customerRepositoryMock, IMapper mapper)
+        public CreateCustomerCommandTests( )
         {
-            _customerRepositoryMock = customerRepositoryMock;
+            _customerRepositoryMock = new Mock<ICustomerRepository>();
             var mapperConfig = new MapperConfiguration(c =>
             {
                 c.AddProfile<CustomerMappingProfile>();
@@ -34,7 +34,7 @@ namespace Csharp.CRUD.Tests.IntegrationTests
         }
 
         [Fact]
-        public void Should_Not_Invoke_Add_When_Customer_Is_Duplicate()
+        public async void Should_Not_Invoke_Add_When_Customer_Is_Duplicate()
         {
 
             var dbOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
@@ -58,13 +58,13 @@ namespace Csharp.CRUD.Tests.IntegrationTests
             var customer2 = customer1;
             customer2.Id = 2;
          
-            var createCustomerHandler = new CreateCustomerCommandHandler(customerRepo);
+            var createCustomerHandler = new CreateCustomerCommandHandler(customerRepo,_mapper);
 
             CreateCustomerCommand command = new CreateCustomerCommand
             {
                 CreateCustomerDto = _mapper.Map<CreateCustomerDto>(customer2)
             };
-            createCustomerHandler.Handle(command, CancellationToken.None);
+            await  createCustomerHandler.Handle(command, CancellationToken.None);
 
             _customerRepositoryMock.Verify(x=>x.Add(It.IsAny<Customer>()),Times.Never);
 
