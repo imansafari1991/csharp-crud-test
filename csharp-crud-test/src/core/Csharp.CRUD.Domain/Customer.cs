@@ -7,6 +7,7 @@ namespace Csharp.CRUD.Domain;
 
 public class Customer
 {
+    public int Id { get; set; }
     public string FirstName { get;private set; }
     public string LastName { get;private set; }
     public DateTime DateOfBirth { get;private set; }
