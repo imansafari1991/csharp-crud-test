@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csharp.CRUD.Tests", "src\te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csharp.CRUD.Application", "src\core\Csharp.CRUD.Application\Csharp.CRUD.Application.csproj", "{A19781E6-363F-4E2B-BFD2-D0D211500003}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csharp.CRUD.Persistence", "src\Infrastructure\Csharp.CRUD.Persistence\Csharp.CRUD.Persistence.csproj", "{10E3C5D5-7B32-4A92-AAC6-289E7407A547}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A19781E6-363F-4E2B-BFD2-D0D211500003}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A19781E6-363F-4E2B-BFD2-D0D211500003}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A19781E6-363F-4E2B-BFD2-D0D211500003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10E3C5D5-7B32-4A92-AAC6-289E7407A547}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10E3C5D5-7B32-4A92-AAC6-289E7407A547}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10E3C5D5-7B32-4A92-AAC6-289E7407A547}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10E3C5D5-7B32-4A92-AAC6-289E7407A547}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +57,7 @@ Global
 		{872A259E-ED38-4A5E-952C-230D6BBF91C5} = {69669A6F-EBCA-4CFF-85E0-038F88A1F865}
 		{503C2751-15EA-42D3-B6FC-986B9957A9C2} = {F0EB054F-5DF0-49F1-92F8-66C638FE95FA}
 		{A19781E6-363F-4E2B-BFD2-D0D211500003} = {69669A6F-EBCA-4CFF-85E0-038F88A1F865}
+		{10E3C5D5-7B32-4A92-AAC6-289E7407A547} = {50DD2D6B-5245-4AC3-AA20-727AC16ACAB2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C9A191DC-2AB0-4786-B85A-52757FEF5892}
