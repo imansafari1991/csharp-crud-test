@@ -7,7 +7,7 @@ public static class Constants
 
     public const string DateOfBirthInvalid = "You cannot born after today!";
 
-
+    public const string InvalidPhoneNumberRegion = "Missing or invalid default region.";
 
     public const string emailPattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
                                         + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)"
